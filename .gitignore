@@ -1,0 +1,14 @@
+# Ignorar carpetas de compilación de Maven
+**/target/
+
+# Archivos de NetBeans
+nbproject/private/
+build/
+dist/
+*.log
+
+# Archivos temporales y de sistema
+*.class
+*.iml
+*.DS_Store
+Thumbs.db
