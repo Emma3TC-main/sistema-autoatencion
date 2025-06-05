@@ -10,7 +10,6 @@
         <module>sistema-cliente</module>
         <module>sistema-cocina</module>
         <module>sistema-entrega</module>
-        <module>sistema-mesas</module>
         <module>sistema-admin</module>
         <module>sistema-app</module>
         <module>sistema-comun</module>
