@@ -14,6 +14,7 @@
         <module>sistema-app</module>
         <module>sistema-comun</module>
         <module>sistema-mesas</module>
+        <module>sistema-persistencia</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
