@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package primerejercicio;
+package com.grupo1.vista;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;

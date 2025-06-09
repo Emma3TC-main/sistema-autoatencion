@@ -1,4 +1,4 @@
-package primerejercicio;
+package com.grupo1.vista;
 
 public class ProductoSeleccionado {
     private String nombre;

@@ -11,4 +11,15 @@
     <properties>
         <exec.mainClass>com.grupo1.sistema.mesas.SistemaMesas</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-comun</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>  
+        </dependency>
+    </dependencies>    
 </project>
