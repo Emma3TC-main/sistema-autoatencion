@@ -12,4 +12,60 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>SistemaLogin</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>                   
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-intellij-themes</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>  
+        </dependency>
+        <!--modulos que necesita-->
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-admin</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+            
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-app</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-cliente</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-cocina</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-comun</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-entrega</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-mesas</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-persistencia</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>       
 </project>

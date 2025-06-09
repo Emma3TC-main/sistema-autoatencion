@@ -16,7 +16,9 @@ public interface UsuarioDAO {
     
     void insertar(UsuarioDTO usuario) throws SQLException;
     UsuarioDTO buscarPorId(int id) throws SQLException;
-    List<UsuarioDTO> Listar() throws SQLException;
+    List<UsuarioDTO> listar() throws SQLException;
     void actualizar(UsuarioDTO usuario) throws SQLException;
     void eliminar(int id) throws SQLException;
+    UsuarioDTO login(String correo, String passwordHash) throws SQLException;
+    
 }

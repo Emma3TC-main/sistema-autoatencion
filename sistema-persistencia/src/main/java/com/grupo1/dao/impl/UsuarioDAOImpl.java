@@ -8,6 +8,7 @@ import com.grupo1.conexion.ConexionSQL;
 import com.grupo1.dao.UsuarioDAO;
 import com.grupo1.dto.UsuarioDTO;
 import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public List<UsuarioDTO> Listar() throws SQLException {
+    public List<UsuarioDTO> listar() throws SQLException {
         List<UsuarioDTO> usuarios = new ArrayList<>();
         String sql = "{call proc_obtener_todos_usuarios}";
         try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql);
@@ -92,6 +93,33 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             cstmt.setInt(1, id);
             cstmt.executeUpdate();
         }
+    }
+    
+     @Override
+    public UsuarioDTO login(String correo, String passwordHash) throws SQLException {
+        UsuarioDTO usuario = null;
+
+        String sql = "{ call SP_LOGIN_USER(?, ?) }";
+
+        try (Connection conn = ConexionSQL.getInstancia().getConexion();
+             CallableStatement stmt = conn.prepareCall(sql)) {
+
+            stmt.setString(1, correo);
+            stmt.setString(2, passwordHash);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    usuario = new UsuarioDTO();
+                    usuario.setIdUsuario(rs.getInt("id_usuario"));
+                    usuario.setNombre(rs.getString("nombre"));
+                    usuario.setRol(rs.getString("rol"));
+                    usuario.setCorreo(rs.getString("correo"));
+                    // no devolvemos el passwordHash por seguridad
+                }
+            }
+        }
+
+        return usuario;
     }
     
 }
