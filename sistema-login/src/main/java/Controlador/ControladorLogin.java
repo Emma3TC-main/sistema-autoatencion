@@ -12,16 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import com.grupo1.vista.Principal;
-
+import vista.cocinaVista;
+import vista.mesasVista;
+import vista.panelAdmin;
 
 //para el jfreme de cliente:
-
 /**
  *
  * @author PC
  */
 public class ControladorLogin {
-     private LoginFrame view;
+
+    private LoginFrame view;
     private UsuarioDAO usuarioDAO;
 
     public ControladorLogin(LoginFrame view) {
@@ -63,12 +65,15 @@ public class ControladorLogin {
                         break;
                     case "mozo":
                         mostrarInfo("Módulo disponible: sistema-entrega / sistema-mesas", "Login Correcto");
+                        abrirModuloEntrega();
                         break;
                     case "cocinero":
                         mostrarInfo("Módulo disponible: sistema-cocina", "Login Correcto");
+                        abrirModuloCocina();
                         break;
                     case "admin":
                         mostrarInfo("Módulo disponible: sistema-admin", "Login Correcto");
+                        abrirModuloAdministracion();
                         break;
                     default:
                         mostrarInfo("Rol no reconocido: " + rol, "Login Correcto");
@@ -91,7 +96,28 @@ public class ControladorLogin {
         javax.swing.SwingUtilities.invokeLater(() -> {
             Principal principalFrame = new Principal();
             principalFrame.setVisible(true);
-            
+
+        });
+    }
+
+    private void abrirModuloAdministracion() {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            panelAdmin adminFrame = new panelAdmin();
+            adminFrame.setVisible(true);
+        });
+    }
+
+    private void abrirModuloCocina() {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            cocinaVista cocinaFrame = new cocinaVista();
+            cocinaFrame.setVisible(true);
+        });
+    }
+
+    private void abrirModuloEntrega() {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            mesasVista mesaFrame = new mesasVista();
+            mesaFrame.setVisible(true);
         });
     }
 
