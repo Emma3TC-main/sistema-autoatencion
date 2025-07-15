@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author emma3tc
  */
 public class ComandaDTO {
+
     private int idComanda;
     private int idPedido;
     private Timestamp fechaGeneracion;
@@ -47,6 +48,10 @@ public class ComandaDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "ComandaDTO{idPedido=" + idPedido + ", estado='" + estado + "'}";
+    }
+
 }

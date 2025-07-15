@@ -23,4 +23,6 @@ public interface ComandaDAO {
     void actualizar(ComandaDTO comanda) throws SQLException;
 
     void eliminar(int id) throws SQLException;
+
+    int obtenerUltimoIdInsertado() throws SQLException;
 }

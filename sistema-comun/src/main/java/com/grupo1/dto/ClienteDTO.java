@@ -9,6 +9,7 @@ package com.grupo1.dto;
  * @author emma3tc
  */
 public class ClienteDTO {
+
     private int idCliente;
     private String Nombre;
     private String DNI;
@@ -46,8 +47,6 @@ public class ClienteDTO {
     public void setRUC(String RUC) {
         this.RUC = RUC;
     }
-    
-    
 
     public String getRazonSocial() {
         return razonSocial;
@@ -56,6 +55,10 @@ public class ClienteDTO {
     public void setRazonSocial(String razonSocial) {
         this.razonSocial = razonSocial;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "ClienteDTO{id=" + idCliente + ", nombre='" + Nombre + "', dni='" + DNI + "', ruc='" + RUC + "', razonSocial='" + razonSocial + "'}";
+    }
+
 }

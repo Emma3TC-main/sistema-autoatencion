@@ -8,8 +8,11 @@ import com.grupo1.conexion.ConexionSQL;
 import com.grupo1.dao.ComandaDAO;
 import com.grupo1.dto.ComandaDTO;
 import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,18 +24,39 @@ public class ComandaDAOImpl implements ComandaDAO {
 
     @Override
     public void insertar(ComandaDTO comanda) throws SQLException {
-        String sql = "{call proc_insertar_comandas(?, ?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        if (comanda == null) {
+            throw new IllegalArgumentException("❌ La comanda no puede ser null.");
+        }
+        if (comanda.getIdPedido() <= 0) {
+            throw new IllegalArgumentException("❌ ID de pedido inválido.");
+        }
+        if (comanda.getEstado() == null || comanda.getEstado().isBlank()) {
+            throw new IllegalArgumentException("❌ El estado de la comanda es obligatorio.");
+        }
+
+        String sql = "{call proc_insertar_comandas(?,?,?)}"; // Último parámetro es OUTPUT
+
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
+
             cstmt.setInt(1, comanda.getIdPedido());
             cstmt.setString(2, comanda.getEstado());
-            cstmt.executeUpdate();
+
+            cstmt.registerOutParameter(3, Types.INTEGER);
+
+            int filas = cstmt.executeUpdate();
+            if (filas == 0) {
+                throw new SQLException("❌ No se insertó la comanda.");
+            }
+
+            int idGenerado = cstmt.getInt(3);
+            comanda.setIdComanda(idGenerado);
         }
     }
 
     @Override
     public ComandaDTO buscarPorId(int id) throws SQLException {
         String sql = "{call proc_obtener_comandas_por_id(?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
             cstmt.setInt(1, id);
             try (ResultSet rs = cstmt.executeQuery()) {
                 if (rs.next()) {
@@ -51,7 +75,7 @@ public class ComandaDAOImpl implements ComandaDAO {
     public List<ComandaDTO> listar() throws SQLException {
         List<ComandaDTO> lista = new ArrayList<>();
         String sql = "{call proc_obtener_todos_comandas}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql); ResultSet rs = cstmt.executeQuery()) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql); ResultSet rs = cstmt.executeQuery()) {
             while (rs.next()) {
                 ComandaDTO comanda = new ComandaDTO();
                 comanda.setIdComanda(rs.getInt("id_comanda"));
@@ -66,7 +90,7 @@ public class ComandaDAOImpl implements ComandaDAO {
     @Override
     public void actualizar(ComandaDTO comanda) throws SQLException {
         String sql = "{call proc_actualizar_comandas(?, ?, ?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
             cstmt.setInt(1, comanda.getIdComanda());
             cstmt.setInt(2, comanda.getIdPedido());
             cstmt.setString(3, comanda.getEstado());
@@ -77,9 +101,21 @@ public class ComandaDAOImpl implements ComandaDAO {
     @Override
     public void eliminar(int id) throws SQLException {
         String sql = "{call proc_eliminar_comandas(?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
             cstmt.setInt(1, id);
             cstmt.executeUpdate();
         }
     }
+
+    @Override
+    public int obtenerUltimoIdInsertado() throws SQLException {
+        String sql = "SELECT MAX(id_comanda) AS ultimo_id FROM Comandas";
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("ultimo_id");
+            }
+        }
+        return -1;
+    }
+
 }

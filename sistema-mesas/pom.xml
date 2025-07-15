@@ -21,5 +21,19 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>  
         </dependency>
+        <dependency>
+            <groupId>com.grupo1</groupId>
+            <artifactId>sistema-persistencia</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- Apariencia moderna para Swing -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-intellij-themes</artifactId>
+        </dependency>
     </dependencies>    
 </project>

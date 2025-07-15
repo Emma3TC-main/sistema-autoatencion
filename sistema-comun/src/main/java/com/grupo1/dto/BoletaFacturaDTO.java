@@ -12,6 +12,7 @@ import java.sql.Timestamp;
  * @author emma3tc
  */
 public class BoletaFacturaDTO {
+
     private int idDocumento;
     private int idPedido;
     private String tipoDocumento;
@@ -84,7 +85,10 @@ public class BoletaFacturaDTO {
     public void setMetodoPago(String metodoPago) {
         this.metodoPago = metodoPago;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "BoletaFacturaDTO{idPedido=" + idPedido + ", tipoDocumento='" + tipoDocumento + "', total=" + total + ", igv=" + igv + ", metodoPago='" + metodoPago + "', usuarioId=" + idUsuario + "}";
+    }
+
 }

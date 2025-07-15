@@ -19,4 +19,6 @@ public interface ClienteDAO {
     List<ClienteDTO> Listar() throws SQLException;
     void actualizar(ClienteDTO cliente) throws SQLException;
     void eliminar(int id) throws SQLException;
+    int obtenerUltimoIdInsertado() throws SQLException;
+
 }

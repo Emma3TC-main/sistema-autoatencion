@@ -8,8 +8,10 @@ import com.grupo1.conexion.ConexionSQL;
 import com.grupo1.dao.ProductoDAO;
 import com.grupo1.dto.ProductoDTO;
 import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,20 +23,47 @@ public class ProductoDAOImpl implements ProductoDAO {
 
     @Override
     public void insertar(ProductoDTO producto) throws SQLException {
-        String sql = "{call proc_insertar_productos(?, ?, ?, ?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        if (producto == null) {
+            throw new IllegalArgumentException("❌ Producto no puede ser null.");
+        }
+        if (producto.getNombre() == null || producto.getNombre().isBlank()) {
+            throw new IllegalArgumentException("❌ El nombre del producto es obligatorio.");
+        }
+        if (producto.getPrecioUnitario() == null) {
+            throw new IllegalArgumentException("❌ El precio unitario es obligatorio.");
+        }
+        if (producto.getStock() < 0) {
+            throw new IllegalArgumentException("❌ El stock no puede ser negativo.");
+        }
+
+        String sql = "{call proc_insertar_productos(?,?,?,?,?)}";  // 5 parámetros: último es OUTPUT
+
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
+
             cstmt.setString(1, producto.getNombre());
             cstmt.setBigDecimal(2, producto.getPrecioUnitario());
             cstmt.setInt(3, producto.getStock());
             cstmt.setBoolean(4, producto.isDisponible());
-            cstmt.executeUpdate();
+
+            // Param OUTPUT
+            cstmt.registerOutParameter(5, Types.INTEGER);
+
+            int filas = cstmt.executeUpdate();
+            if (filas == 0) {
+                throw new SQLException("❌ No se insertó el producto.");
+            }
+
+            // Obtener ID generado
+            int idGenerado = cstmt.getInt(5);
+            producto.setIdProducto(idGenerado);
         }
     }
 
     @Override
     public ProductoDTO buscarPorId(int id) throws SQLException {
         String sql = "{call proc_obtener_productos_por_id(?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
+
             cstmt.setInt(1, id);
             try (ResultSet rs = cstmt.executeQuery()) {
                 if (rs.next()) {
@@ -55,7 +84,7 @@ public class ProductoDAOImpl implements ProductoDAO {
     public List<ProductoDTO> listar() throws SQLException {
         List<ProductoDTO> productos = new ArrayList<>();
         String sql = "{call proc_obtener_todos_productos}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql); ResultSet rs = cstmt.executeQuery()) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql); ResultSet rs = cstmt.executeQuery()) {
 
             while (rs.next()) {
                 ProductoDTO producto = new ProductoDTO();
@@ -73,7 +102,8 @@ public class ProductoDAOImpl implements ProductoDAO {
     @Override
     public void actualizar(ProductoDTO producto) throws SQLException {
         String sql = "{call proc_actualizar_productos(?, ?, ?, ?, ?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
+
             cstmt.setInt(1, producto.getIdProducto());
             cstmt.setString(2, producto.getNombre());
             cstmt.setBigDecimal(3, producto.getPrecioUnitario());
@@ -86,7 +116,8 @@ public class ProductoDAOImpl implements ProductoDAO {
     @Override
     public void eliminar(int id) throws SQLException {
         String sql = "{call proc_eliminar_productos(?)}";
-        try (CallableStatement cstmt = ConexionSQL.getInstancia().getConexion().prepareCall(sql)) {
+        try (Connection con = ConexionSQL.getInstancia().getConexion(); CallableStatement cstmt = con.prepareCall(sql)) {
+
             cstmt.setInt(1, id);
             cstmt.executeUpdate();
         }
