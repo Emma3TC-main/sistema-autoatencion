@@ -23,4 +23,8 @@ public interface RegistroEntregaDAO {
     void actualizar(RegistroEntregaDTO registro) throws SQLException;
 
     void eliminar(int id) throws SQLException;
+
+    RegistroEntregaDTO buscarPorPedido(int idPedido) throws SQLException;
+
+    int obtenerUltimoIdInsertado() throws SQLException;
 }

@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author emma3tc
  */
 public class GuiaRemisionDTO {
+
     private int idGuia;
     private int idPedido;
     private int idCliente;
@@ -74,6 +75,10 @@ public class GuiaRemisionDTO {
     public void setFirmaEntrega(String firmaEntrega) {
         this.firmaEntrega = firmaEntrega;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "GuiaRemisionDTO{idPedido=" + idPedido + ", idCliente=" + idCliente + ", razonSocial='" + razonSocial + "', direccionEntrega='" + direccionEntrega + "', firmaEntrega='" + firmaEntrega + "'}";
+    }
+
 }

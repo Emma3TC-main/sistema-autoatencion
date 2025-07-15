@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-
 /**
  *
  * @author emma3tc
@@ -65,4 +64,9 @@ public class ConexionSQL {
             dataSource.close();
         }
     }
+
+    public HikariDataSource getDataSource() {
+        return dataSource;
+    }
+
 }

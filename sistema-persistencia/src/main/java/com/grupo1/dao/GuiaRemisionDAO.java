@@ -23,4 +23,6 @@ public interface GuiaRemisionDAO {
     void actualizar(GuiaRemisionDTO guia) throws SQLException;
 
     void eliminar(int id) throws SQLException;
+
+    int obtenerUltimoIdInsertado() throws SQLException;
 }

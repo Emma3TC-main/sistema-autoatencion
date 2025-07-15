@@ -6,13 +6,12 @@ package com.grupo1.dto;
 
 import java.sql.Timestamp;
 
-
-
 /**
  *
  * @author emma3tc
  */
 public class PedidoDTO {
+
     private int idPedido;
     private int idCliente;
     private Integer idMesa;
@@ -67,7 +66,10 @@ public class PedidoDTO {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "PedidoDTO{id=" + idPedido + ", clienteId=" + idCliente + ", tipoConsumo='" + tipoConsumo + "', estado='" + estado + "', mesa=" + idMesa + "}";
+    }
+
 }

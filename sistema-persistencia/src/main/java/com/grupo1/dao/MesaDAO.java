@@ -13,9 +13,17 @@ import java.util.List;
  * @author emma3tc
  */
 public interface MesaDAO {
+
     void insertar(MesaDTO mesa) throws SQLException;
+
     MesaDTO buscarPorId(int id) throws SQLException;
+
     List<MesaDTO> listar() throws SQLException;
+
     void actualizar(MesaDTO mesa) throws SQLException;
+
     void eliminar(int id) throws SQLException;
+
+    MesaDTO buscarPorNumero(int numero) throws SQLException;
+
 }

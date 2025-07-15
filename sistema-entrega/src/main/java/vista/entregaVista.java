@@ -4,6 +4,9 @@
  */
 package vista;
 
+import controlador.ControladorEntrega;
+import java.awt.CardLayout;
+
 /**
  *
  * @author PC
@@ -13,9 +16,39 @@ public class entregaVista extends javax.swing.JFrame {
     /**
      * Creates new form entregaVista
      */
+    private EntregaPanel entregaPanel;
+    private DetalleEntrega detalleEntrega;
+
     public entregaVista() {
         initComponents();
+
+        // Inicializar paneles
+        entregaPanel = new EntregaPanel();
+        detalleEntrega = new DetalleEntrega();
+
+        // Establecer layout
+        jPanelCambio.setLayout(new CardLayout());
+
+        // Agregar paneles al contenedor
+        jPanelCambio.add(entregaPanel, "entregaPanel");
+        jPanelCambio.add(detalleEntrega, "detalleEntrega");
+
+        // Mostrar el panel principal
+        cambiarPanel("entregaPanel");
     }
+
+    public void cambiarPanel(String nombre) {
+        ((CardLayout) jPanelCambio.getLayout()).show(jPanelCambio, nombre);
+    }
+
+    public EntregaPanel getEntregaPanel() {
+        return entregaPanel;
+    }
+
+    public DetalleEntrega getDetalleEntrega() {
+        return detalleEntrega;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,27 +59,30 @@ public class entregaVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanelCambio = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Panel de gestion de Entrega");
+        javax.swing.GroupLayout jPanelCambioLayout = new javax.swing.GroupLayout(jPanelCambio);
+        jPanelCambio.setLayout(jPanelCambioLayout);
+        jPanelCambioLayout.setHorizontalGroup(
+            jPanelCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 591, Short.MAX_VALUE)
+        );
+        jPanelCambioLayout.setVerticalGroup(
+            jPanelCambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 546, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(246, 246, 246)
-                .addComponent(jLabel1)
-                .addContainerGap(199, Short.MAX_VALUE))
+            .addComponent(jPanelCambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addContainerGap(381, Short.MAX_VALUE))
+            .addComponent(jPanelCambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -55,39 +91,16 @@ public class entregaVista extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    // Punto de entrada con el controlador
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(entregaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(entregaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(entregaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(entregaVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new entregaVista().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            entregaVista vista = new entregaVista();
+            new ControladorEntrega(vista); // Aquí conectamos todo
+            vista.setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanelCambio;
     // End of variables declaration//GEN-END:variables
 }

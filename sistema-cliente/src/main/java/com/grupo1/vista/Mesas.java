@@ -4,7 +4,9 @@
  */
 package com.grupo1.vista;
 
+import com.grupo1.controller.ControladorMesas;
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
@@ -14,7 +16,8 @@ import javax.swing.SwingUtilities;
  * @author user
  */
 public class Mesas extends javax.swing.JPanel {
-private Principal principal;
+
+    private Principal principal;
 
     /**
      * Creates new form Mesas
@@ -26,104 +29,62 @@ private Principal principal;
     public Mesas(Principal principal) {
         this.principal = principal;
         initComponents();
-                jToggleButton2.setSelected(true); // Por defecto no presionado
-        jToggleButton2.setBackground(Color.RED); // Color inicial
-        
-        jToggleButton3.setSelected(false); // Por defecto no presionado
-        jToggleButton3.setBackground(Color.GREEN); // Color inicial
-        
-        jToggleButton4.setSelected(false); // Por defecto no presionado
-        jToggleButton4.setBackground(Color.GREEN); // Color inicial
+        new ControladorMesas(this);
 
-        jToggleButton5.setSelected(true); // Por defecto no presionado
-        jToggleButton5.setBackground(Color.RED); // Color inicial
-
-        jToggleButton8.setSelected(false); // Por defecto no presionado
-        jToggleButton8.setBackground(Color.GREEN); // Color inicial
-
-        jToggleButton9.setSelected(false); // Por defecto no presionado
-        jToggleButton9.setBackground(Color.GREEN); // Color inicial    
-
-        jToggleButton6.setSelected(true); // Por defecto no presionado
-        jToggleButton6.setBackground(Color.RED); // Color inicial         
-
-        jToggleButton7.setSelected(true); // Por defecto no presionado
-        jToggleButton7.setBackground(Color.RED); // Color inicial
-        
-        jToggleButton1.setSelected(false); // Por defecto no presionado
-        jToggleButton1.setBackground(Color.GREEN); // Color inicial        
-
-        jToggleButton10.setSelected(true); // Por defecto no presionado
-        jToggleButton10.setBackground(Color.RED); // Color inicial  
-    
-        jToggleButton2.addItemListener(new java.awt.event.ItemListener() {
-            @Override
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (!jToggleButton2.isSelected()) {
-                    // Si el usuario intenta desmarcarlo, lo volvemos a marcar
-                    SwingUtilities.invokeLater(() -> {
-                        jToggleButton2.setSelected(true); // Lo forzamos a mantenerse marcado
-                        jToggleButton2.setBackground(Color.RED);
-                    });
-                }
-            }
-        });        
-    
-        jToggleButton5.addItemListener(new java.awt.event.ItemListener() {
-            @Override
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (!jToggleButton5.isSelected()) {
-                    // Si el usuario intenta desmarcarlo, lo volvemos a marcar
-                    SwingUtilities.invokeLater(() -> {
-                        jToggleButton5.setSelected(true); // Lo forzamos a mantenerse marcado
-                        jToggleButton5.setBackground(Color.RED);
-                    });
-                }
-            }
-        });  
-
-        jToggleButton6.addItemListener(new java.awt.event.ItemListener() {
-            @Override
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (!jToggleButton6.isSelected()) {
-                    // Si el usuario intenta desmarcarlo, lo volvemos a marcar
-                    SwingUtilities.invokeLater(() -> {
-                        jToggleButton6.setSelected(true); // Lo forzamos a mantenerse marcado
-                        jToggleButton6.setBackground(Color.RED);
-                    });
-                }
-            }
-        });  
-
-        jToggleButton7.addItemListener(new java.awt.event.ItemListener() {
-            @Override
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (!jToggleButton7.isSelected()) {
-                    // Si el usuario intenta desmarcarlo, lo volvemos a marcar
-                    SwingUtilities.invokeLater(() -> {
-                        jToggleButton7.setSelected(true); // Lo forzamos a mantenerse marcado
-                        jToggleButton7.setBackground(Color.RED);
-                    });
-                }
-            }
-        }); 
-        
-        jToggleButton10.addItemListener(new java.awt.event.ItemListener() {
-            @Override
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                if (!jToggleButton10.isSelected()) {
-                    // Si el usuario intenta desmarcarlo, lo volvemos a marcar
-                    SwingUtilities.invokeLater(() -> {
-                        jToggleButton10.setSelected(true); // Lo forzamos a mantenerse marcado
-                        jToggleButton10.setBackground(Color.RED);
-                    });
-                }
-            }
-        }); 
     }
 
-    
-    
+    public Principal getPrincipal() {
+        return principal;
+    }
+
+    public JToggleButton getJtbMesa1() {
+        return jtbMesa1;
+    }
+
+    public JToggleButton getJtbMesa2() {
+        return jtbMesa2;
+    }
+
+    public JToggleButton getJtbMesa3() {
+        return jtbMesa3;
+    }
+
+    public JToggleButton getJtMesa4() {
+        return jtMesa4;
+    }
+
+    public JToggleButton getJtbMesa5() {
+        return jtbMesa5;
+    }
+
+    public JToggleButton getJtbMesa6() {
+        return jtbMesa6;
+    }
+
+    public JToggleButton getJtbMesa7() {
+        return jtbMesa7;
+    }
+
+    public JToggleButton getJtbMesa8() {
+        return jtbMesa8;
+    }
+
+    public JToggleButton getJtbMesa9() {
+        return jtbMesa9;
+    }
+
+    public JToggleButton getJtbMesa10() {
+        return jtbMesa10;
+    }
+
+    public JButton getBtnContinuar() {
+        return btnContinuar;
+    }
+
+    public JButton getBtnVolver() {
+        return btnVolver;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,47 +95,49 @@ private Principal principal;
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jtbMesa1 = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
-        jToggleButton3 = new javax.swing.JToggleButton();
+        jtbMesa2 = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        jtbMesa3 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
-        jToggleButton5 = new javax.swing.JToggleButton();
+        jtMesa4 = new javax.swing.JToggleButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jToggleButton6 = new javax.swing.JToggleButton();
+        jtbMesa7 = new javax.swing.JToggleButton();
         jLabel8 = new javax.swing.JLabel();
-        jToggleButton7 = new javax.swing.JToggleButton();
-        jToggleButton8 = new javax.swing.JToggleButton();
+        jtbMesa8 = new javax.swing.JToggleButton();
+        jtbMesa5 = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
-        jToggleButton9 = new javax.swing.JToggleButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jtbMesa6 = new javax.swing.JToggleButton();
+        jtbMesa9 = new javax.swing.JToggleButton();
         jLabel10 = new javax.swing.JLabel();
-        jToggleButton10 = new javax.swing.JToggleButton();
+        jtbMesa10 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mesas Disponibles");
 
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                jtbMesa1ActionPerformed(evt);
             }
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Mesa N°1");
 
-        jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
+                jtbMesa2ActionPerformed(evt);
             }
         });
 
@@ -184,20 +147,20 @@ private Principal principal;
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Mesa N°4");
 
-        jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
+                jtbMesa3ActionPerformed(evt);
             }
         });
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Mesa N°3");
 
-        jToggleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        jtMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtMesa4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                jtMesa4ActionPerformed(evt);
             }
         });
 
@@ -207,68 +170,74 @@ private Principal principal;
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Mesa N°8");
 
-        jToggleButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton6ActionPerformed(evt);
+                jtbMesa7ActionPerformed(evt);
             }
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Mesa N°7");
 
-        jToggleButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton7ActionPerformed(evt);
+                jtbMesa8ActionPerformed(evt);
             }
         });
 
-        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton8ActionPerformed(evt);
+                jtbMesa5ActionPerformed(evt);
             }
         });
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Mesa N°5");
 
-        jToggleButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
-        jToggleButton9.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/4_sillas (1).png"))); // NOI18N
+        jtbMesa6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton9ActionPerformed(evt);
+                jtbMesa6ActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8_sillas.png"))); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8_sillas.png"))); // NOI18N
+        jtbMesa9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jtbMesa9ActionPerformed(evt);
             }
         });
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Mesa N°9");
 
-        jToggleButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8_sillas.png"))); // NOI18N
-        jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
+        jtbMesa10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/8_sillas.png"))); // NOI18N
+        jtbMesa10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton10ActionPerformed(evt);
+                jtbMesa10ActionPerformed(evt);
             }
         });
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Mesa N°10");
 
-        jButton1.setText("Regresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setBackground(new java.awt.Color(255, 102, 0));
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Regresar");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Continuar");
+        btnContinuar.setBackground(new java.awt.Color(255, 102, 51));
+        btnContinuar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuar.setText("Continuar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -278,51 +247,48 @@ private Principal principal;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnVolver)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(btnContinuar))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
+                                .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jtbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(60, 60, 60)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtbMesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(42, 42, 42)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(60, 60, 60)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jToggleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtbMesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -333,167 +299,106 @@ private Principal principal;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtMesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)))
-                .addGap(41, 41, 41)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9))
+                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtbMesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtbMesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)))
-                .addGap(69, 69, 69)
+                        .addComponent(jLabel8)))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10))
+                        .addComponent(jLabel11))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToggleButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtbMesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(jLabel10)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnVolver)
+                    .addComponent(btnContinuar))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        principal.mostrarPanel("ParaLlevar");
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
 
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton2.isSelected()) {
-            jToggleButton2.setBackground(Color.RED);
-        } else {
-            jToggleButton2.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+    private void jtbMesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa1ActionPerformed
         // TODO add your handling code here:
-        if (jToggleButton3.isSelected()) {
-            jToggleButton3.setBackground(Color.RED);
-        } else {
-            jToggleButton3.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
+    }//GEN-LAST:event_jtbMesa1ActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton4.isSelected()) {
-            jToggleButton4.setBackground(Color.RED);
-        } else {
-            jToggleButton4.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
+    private void jtbMesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa2ActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton5.isSelected()) {
-            jToggleButton5.setBackground(Color.RED);
-        } else {
-            jToggleButton5.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    }//GEN-LAST:event_jtbMesa2ActionPerformed
 
-    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton8.isSelected()) {
-            jToggleButton8.setBackground(Color.RED);
-        } else {
-            jToggleButton8.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton8ActionPerformed
+    private void jtbMesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa3ActionPerformed
 
-    private void jToggleButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton9ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton9.isSelected()) {
-            jToggleButton9.setBackground(Color.RED);
-        } else {
-            jToggleButton9.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton9ActionPerformed
+    }//GEN-LAST:event_jtbMesa3ActionPerformed
 
-    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton6.isSelected()) {
-            jToggleButton6.setBackground(Color.RED);
-        } else {
-            jToggleButton6.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton6ActionPerformed
+    private void jtMesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtMesa4ActionPerformed
 
-    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton7.isSelected()) {
-            jToggleButton7.setBackground(Color.RED);
-        } else {
-            jToggleButton7.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton7ActionPerformed
+    }//GEN-LAST:event_jtMesa4ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton1.isSelected()) {
-            jToggleButton1.setBackground(Color.RED);
-        } else {
-            jToggleButton1.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void jtbMesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa5ActionPerformed
 
-    private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton10.isSelected()) {
-            jToggleButton10.setBackground(Color.RED);
-        } else {
-            jToggleButton10.setBackground(Color.GREEN);
-    
-        }
-    }//GEN-LAST:event_jToggleButton10ActionPerformed
+    }//GEN-LAST:event_jtbMesa5ActionPerformed
+
+    private void jtbMesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa6ActionPerformed
+
+    }//GEN-LAST:event_jtbMesa6ActionPerformed
+
+    private void jtbMesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa7ActionPerformed
+
+    }//GEN-LAST:event_jtbMesa7ActionPerformed
+
+    private void jtbMesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa8ActionPerformed
+
+    }//GEN-LAST:event_jtbMesa8ActionPerformed
+
+    private void jtbMesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa9ActionPerformed
+
+    }//GEN-LAST:event_jtbMesa9ActionPerformed
+
+    private void jtbMesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbMesa10ActionPerformed
+
+    }//GEN-LAST:event_jtbMesa10ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnContinuar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -505,15 +410,15 @@ private Principal principal;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton10;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
-    private javax.swing.JToggleButton jToggleButton6;
-    private javax.swing.JToggleButton jToggleButton7;
-    private javax.swing.JToggleButton jToggleButton8;
-    private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JToggleButton jtMesa4;
+    private javax.swing.JToggleButton jtbMesa1;
+    private javax.swing.JToggleButton jtbMesa10;
+    private javax.swing.JToggleButton jtbMesa2;
+    private javax.swing.JToggleButton jtbMesa3;
+    private javax.swing.JToggleButton jtbMesa5;
+    private javax.swing.JToggleButton jtbMesa6;
+    private javax.swing.JToggleButton jtbMesa7;
+    private javax.swing.JToggleButton jtbMesa8;
+    private javax.swing.JToggleButton jtbMesa9;
     // End of variables declaration//GEN-END:variables
 }

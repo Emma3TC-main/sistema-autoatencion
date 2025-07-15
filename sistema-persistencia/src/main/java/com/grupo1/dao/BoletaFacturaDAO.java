@@ -23,4 +23,7 @@ public interface BoletaFacturaDAO {
     void actualizar(BoletaFacturaDTO boleta) throws SQLException;
 
     void eliminar(int id) throws SQLException;
+
+    int obtenerUltimoIdInsertado() throws SQLException;
+
 }

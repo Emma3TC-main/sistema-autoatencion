@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.grupo1.vista;
- 
+
+import com.grupo1.controller.ControladorFormaConsumo;
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
 
 /**
@@ -13,22 +16,41 @@ import javax.swing.SwingUtilities;
  * @author user
  */
 public class ParaLlevar_o_Aca extends javax.swing.JPanel {
-private Principal principal;
+
+    private Principal principal;
 
     /**
      * Creates new form ParaLlevar_o_Aca
      */
-
     public ParaLlevar_o_Aca() {
         initComponents();
     }
+
     public ParaLlevar_o_Aca(Principal principal) {
-    this.principal = principal;
-    initComponents();
+        this.principal = principal;
+        initComponents();
+        new ControladorFormaConsumo(this);
     }
 
+    public JToggleButton getJToggleButton1() {
+        return btnConsumirAqui;
+    }
 
-    
+    public JToggleButton getJToggleButton2() {
+        return btnParaLlevar;
+    }
+
+    public JButton getContinuar() {
+        return Continuar;
+    }
+
+    public JButton getRegresar() {
+        return Regresar;
+    }
+
+    public Principal getPrincipal() {
+        return principal;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,31 +63,37 @@ private Principal principal;
 
         botones = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        btnConsumirAqui = new javax.swing.JToggleButton();
+        btnParaLlevar = new javax.swing.JToggleButton();
         Continuar = new javax.swing.JButton();
         Regresar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Selecionar Forma");
+        jLabel1.setText("Seleccionar forma de consumo");
 
-        botones.add(jToggleButton1);
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aca.png"))); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        botones.add(btnConsumirAqui);
+        btnConsumirAqui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aca.png"))); // NOI18N
+        btnConsumirAqui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnConsumirAquiActionPerformed(evt);
             }
         });
 
-        botones.add(jToggleButton2);
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llevar.png"))); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        botones.add(btnParaLlevar);
+        btnParaLlevar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/llevar.png"))); // NOI18N
+        btnParaLlevar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                btnParaLlevarActionPerformed(evt);
             }
         });
 
+        Continuar.setBackground(new java.awt.Color(255, 153, 51));
+        Continuar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Continuar.setForeground(new java.awt.Color(255, 255, 255));
         Continuar.setText("Continuar");
         Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +101,9 @@ private Principal principal;
             }
         });
 
+        Regresar.setBackground(new java.awt.Color(255, 153, 51));
+        Regresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
         Regresar.setText("Regresar");
         Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,34 +111,47 @@ private Principal principal;
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Regresar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Continuar)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(87, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnConsumirAqui, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnParaLlevar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                    .addComponent(btnConsumirAqui, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnParaLlevar, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Continuar)
                     .addComponent(Regresar))
@@ -115,34 +159,19 @@ private Principal principal;
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton1.isSelected()) {
-            jToggleButton1.setBackground(Color.GREEN);
-            jToggleButton2.setBackground(null); // o Color.LIGHT_GRAY;
-        }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnConsumirAquiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsumirAquiActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
-        if (jToggleButton2.isSelected()) {
-            jToggleButton2.setBackground(Color.GREEN);
-            jToggleButton1.setBackground(null); // o Color.LIGHT_GRAY;
-        }
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_btnConsumirAquiActionPerformed
+
+    private void btnParaLlevarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParaLlevarActionPerformed
+
+    }//GEN-LAST:event_btnParaLlevarActionPerformed
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarActionPerformed
-        // TODO add your handling code here:
-        // Si deseas guardar datos aquí, puedes hacerlo
-        principal.getProductosSeleccionados().add(new ProductoSeleccionado("Para Llevar", 1));
-
-        principal.mostrarPanel("Mesas");
 
     }//GEN-LAST:event_ContinuarActionPerformed
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
-    // Mostrar la nueva ventana primero
-    principal.mostrarPanel("Botones");
 
     }//GEN-LAST:event_RegresarActionPerformed
 
@@ -151,10 +180,10 @@ private Principal principal;
     private javax.swing.JButton Continuar;
     private javax.swing.JButton Regresar;
     private javax.swing.ButtonGroup botones;
+    private javax.swing.JToggleButton btnConsumirAqui;
+    private javax.swing.JToggleButton btnParaLlevar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
-
 
 }

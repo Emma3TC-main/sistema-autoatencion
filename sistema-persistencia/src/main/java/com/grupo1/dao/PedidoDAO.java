@@ -13,9 +13,18 @@ import java.util.List;
  * @author emma3tc
  */
 public interface PedidoDAO {
+
     void insertar(PedidoDTO pedido) throws SQLException;
+
     PedidoDTO buscarPorId(int id) throws SQLException;
+
     List<PedidoDTO> listar() throws SQLException;
+
     void actualizar(PedidoDTO pedido) throws SQLException;
+
     void eliminar(int id) throws SQLException;
+
+    int obtenerUltimoIdInsertado() throws SQLException;
+
+    void actualizarEstado(int idPedido, String nuevoEstado) throws SQLException;
 }
